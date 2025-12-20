@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Craig’sLogs Marketplace</title>
+
+<style>
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+body{margin:0;background:#000;color:#fff}
+
+/* HEADER */
+header{
+display:flex;justify-content:space-between;align-items:center;
+padding:16px 20px;border-bottom:1px solid #222;
+flex-wrap:wrap;gap:12px;
+}
+.logo{color:#c9a44d;font-size:28px;font-weight:bold}
+.marketplace{color:#c9a44d;font-size:28px;font-weight:bold}
+
+/* NAV */
+nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.nav-btn{
+padding:14px 24px;border-radius:10px;background:#c9a44d;
+border:none;color:#000;font-weight:bold;cursor:pointer;
+font-size:16px;min-width:110px;text-align:center;
+}
+.cart-badge{
+background:red;color:#fff;font-size:12px;
+padding:3px 7px;border-radius:50%;margin-left:6px;
+}
+
+/* PAGES */
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+
+/* HERO */
+.hero{text-align:center;padding:70px 20px}
+.hero h1{font-size:30px}
+
+/* SOCIAL */
+.social-center{
+display:flex;justify-content:center;gap:14px;
+flex-wrap:wrap;margin-bottom:60px
+}
+.social-item{
+display:flex;align-items:center;gap:12px;
+padding:16px 26px;background:#111;
+border-radius:50px;border:1px solid #222;
+cursor:pointer;font-size:16px
+}
+.social-item img{width:26px}
+
+/* PRODUCTS */
+.products{
+display:grid;gap:28px;max-width:520px;
+margin:auto;padding:30px 16px
+}
+.product{
+background:#111;border:1px solid #222;
+border-radius:14px;padding:20px;text-align:center
+}
+.product img{
+width:100%;border-radius:10px;
+height:240px;object-fit:cover
+}
+.product h3{margin:15px 0;font-size:20px}
+.product p{font-size:15px;color:#ccc}
+.product button{
+margin-top:15px;width:100%;padding:14px;
+background:#c9a44d;border:none;
+border-radius:10px;font-weight:bold;
+cursor:pointer;font-size:16px
+}
+.product button.remove{background:#444;color:#fff}
+
+/* CART */
+.cart-section{padding:50px 20px;max-width:600px;margin:auto}
+.cart-item{
+display:flex;justify-content:space-between;align-items:center;
+border-bottom:1px solid #222;padding:14px 0;
+gap:10px;flex-wrap:wrap
+}
+.cart-item button{
+background:red;border:none;color:#fff;
+padding:8px 14px;border-radius:8px;
+cursor:pointer;font-size:14px
+}
+
+/* PAYMENT */
+.payment-box{
+background:#111;border:1px solid #222;
+border-radius:14px;padding:20px;margin-top:20px
+}
+.payment-box h3{margin-top:0;color:#c9a44d}
+.payment-box p{font-size:15px;line-height:1.6;color:#ccc}
+
+/* COPY */
+.copy-wrap{
+display:flex;gap:8px;margin:10px 0
+}
+.copy-input{
+flex:1;padding:12px;border-radius:8px;
+border:none;background:#000;color:#c9a44d;
+font-size:15px;font-weight:bold
+}
+.copy-btn{
+padding:12px 14px;border:none;
+border-radius:8px;background:#c9a44d;
+font-weight:bold;cursor:pointer
+}
+
+/* WHATSAPP BUTTON */
+.whatsapp-btn{
+margin-top:18px;width:100%;padding:16px;
+background:#25D366;border:none;
+font-size:17px;font-weight:bold;
+border-radius:12px;cursor:pointer;color:#000
+}
+.whatsapp-btn:disabled{
+background:#555;
+color:#aaa;
+cursor:not-allowed
+}
+
+/* FOOTER */
+footer{
+text-align:center;padding:18px;
+border-top:1px solid #222;font-size:14px
+}
+
+/* MOBILE */
+@media (max-width:600px){
+nav{width:100%}
+.nav-btn{flex:1;width:100%}
+.logo{text-align:center;width:100%;font-size:24px}
+.marketplace{font-size:24px}
+.hero h1{font-size:26px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">Craig’sLogs <span class="marketplace">Marketplace</span></div>
+<nav>
+<button class="nav-btn" onclick="showPage('page1')">Home</button>
+<button class="nav-btn" onclick="showPage('cart')">
+Cart <span class="cart-badge" id="cart-count">0</span>
+</button>
+<button class="nav-btn" onclick="contactSupport()">Contact Support</button>
+</nav>
+</header>
+
+<!-- HOME -->
+<div id="page1" class="page active">
+<div class="hero">
+<h1>Select The Type Of Social Media Account You Want To Purchase</h1>
+</div>
+<div class="social-center">
+<div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"> Facebook</div>
+<div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"> Instagram</div>
+<div class="social-item" onclick="showPage('page2')">
+<img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"> TikTok
+</div>
+<div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"> Twitter</div>
+</div>
+</div>
+
+<!-- PRODUCTS -->
+<div id="page2" class="page">
+<div class="hero"><h1>Available TikTok Accounts</h1></div>
+<div class="products">
+<div class="product">
+<img src="https://i.imgur.com/9XqYFQO.jpg">
+<h3>₦25,000</h3>
+<p>No Followers Drop<br>Active Followers<br>TikTok Shop</p>
+<button id="p1" onclick="toggleCart('p1','TikTok Account ₦25,000',25000)">Add to Cart</button>
+</div>
+<div class="product">
+<img src="https://i.imgur.com/9XqYFQO.jpg">
+<h3>₦22,000</h3>
+<p>No Followers Drop<br>Active Followers<br>TikTok Shop</p>
+<button id="p2" onclick="toggleCart('p2','TikTok Account ₦22,000',22000)">Add to Cart</button>
+</div>
+</div>
+</div>
+
+<!-- CART -->
+<div id="cart" class="page">
+<div class="cart-section">
+<h1>Your Cart</h1>
+<div id="cart-items"></div>
+<h2>Total: ₦<span id="total">0</span></h2>
+
+<div class="payment-box">
+<h3>Bank Transfer</h3>
+
+<div class="copy-wrap">
+<input class="copy-input" id="bank" value="OPay" readonly>
+<button class="copy-btn" onclick="copyText('bank')">Copy</button>
+</div>
+
+<div class="copy-wrap">
+<input class="copy-input" id="name" value="CHUKWUKA CRAIG NWOYE" readonly>
+<button class="copy-btn" onclick="copyText('name')">Copy</button>
+</div>
+
+<div class="copy-wrap">
+<input class="copy-input" id="acct" value="8051424233" readonly>
+<button class="copy-btn" onclick="copyText('acct')">Copy</button>
+</div>
+
+<p>After payment, confirm via WhatsApp.</p>
+<button id="payBtn" class="whatsapp-btn" disabled onclick="confirmPayment()">
+I Have Paid (WhatsApp)
+</button>
+</div>
+</div>
+</div>
+
+<footer>© 2025 Craig’sLogs Marketplace</footer>
+
+<script>
+let cartItems={},total=0;
+
+function showPage(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+
+function toggleCart(id,name,price){
+let btn=document.getElementById(id);
+if(cartItems[id]){
+delete cartItems[id];total-=price;
+btn.innerText="Add to Cart";btn.classList.remove("remove");
+}else{
+cartItems[id]={name,price};total+=price;
+btn.innerText="Remove from Cart";btn.classList.add("remove");
+}
+renderCart();
+}
+
+function removeFromCart(id){
+total-=cartItems[id].price;
+delete cartItems[id];
+document.getElementById(id).innerText="Add to Cart";
+document.getElementById(id).classList.remove("remove");
+renderCart();
+}
+
+function renderCart(){
+let list=document.getElementById("cart-items");
+list.innerHTML="";
+let count=0;
+for(let id in cartItems){
+count++;
+list.innerHTML+=`
+<div class="cart-item">
+<span>${cartItems[id].name}</span>
+<span>₦${cartItems[id].price}</span>
+<button onclick="removeFromCart('${id}')">Remove</button>
+</div>`;
+}
+document.getElementById("total").innerText=total;
+document.getElementById("cart-count").innerText=count;
+document.getElementById("payBtn").disabled = count === 0;
+}
+
+function copyText(id){
+let input=document.getElementById(id);
+input.select();input.setSelectionRange(0,99999);
+navigator.clipboard.writeText(input.value);
+alert("Copied");
+}
+
+function confirmPayment(){
+if(total===0) return;
+let msg=`Hello Craig’sLogs Marketplace,%0ATotal Paid: ₦${total}`;
+window.open(`https://wa.me/447882975639?text=${msg}`,"_blank");
+}
+
+function contactSupport(){
+window.open("https://mail.google.com/mail/?view=cm&fs=1&to=craignwoye2@gmail.com&su=Craig’sLogs Marketplace Support","_blank");
+}
+</script>
+
+</body>
+</html>
