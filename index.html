@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Craig’sLogs Marketplace</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
 <style>
 *{box-sizing:border-box;font-family:Arial,sans-serif}
 body{margin:0;background:#000;color:#fff}
@@ -19,15 +21,46 @@ flex-wrap:wrap;gap:12px;
 .marketplace{color:#c9a44d;font-size:28px;font-weight:bold}
 
 /* NAV */
-nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.nav-btn{
-padding:14px 24px;border-radius:10px;background:#c9a44d;
-border:none;color:#000;font-weight:bold;cursor:pointer;
-font-size:16px;min-width:110px;text-align:center;
+nav{
+display:flex;
+gap:12px;
+align-items:center;
+flex-wrap:wrap;
+width:100%;
 }
+
+.nav-btn{
+padding:18px;
+border-radius:18px;
+background:#c9a44d;
+border:none;
+color:#000;
+font-weight:bold;
+cursor:pointer;
+font-size:18px;
+text-align:center;
+flex:1;
+}
+
 .cart-badge{
-background:red;color:#fff;font-size:12px;
-padding:3px 7px;border-radius:50%;margin-left:6px;
+background:red;
+color:#fff;
+font-size:12px;
+padding:4px 8px;
+border-radius:50%;
+margin-left:6px;
+}
+
+/* MOBILE HOME BUTTON LAYOUT */
+@media (max-width:600px){
+nav{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+}
+.nav-btn:nth-child(3){
+grid-column:1 / -1;
+}
 }
 
 /* PAGES */
@@ -96,9 +129,7 @@ border-radius:14px;padding:20px;margin-top:20px
 .payment-box p{font-size:15px;line-height:1.6;color:#ccc}
 
 /* COPY */
-.copy-wrap{
-display:flex;gap:8px;margin:10px 0
-}
+.copy-wrap{display:flex;gap:8px;margin:10px 0}
 .copy-input{
 flex:1;padding:12px;border-radius:8px;
 border:none;background:#000;color:#c9a44d;
@@ -110,7 +141,7 @@ border-radius:8px;background:#c9a44d;
 font-weight:bold;cursor:pointer
 }
 
-/* WHATSAPP BUTTON */
+/* WHATSAPP */
 .whatsapp-btn{
 margin-top:18px;width:100%;padding:16px;
 background:#25D366;border:none;
@@ -118,25 +149,34 @@ font-size:17px;font-weight:bold;
 border-radius:12px;cursor:pointer;color:#000
 }
 .whatsapp-btn:disabled{
-background:#555;
-color:#aaa;
-cursor:not-allowed
+background:#555;color:#aaa;cursor:not-allowed
 }
+
+/* CONTACT */
+.contact-page{
+font-family:'Playfair Display', serif;
+padding:70px 16px;text-align:center;
+}
+.contact-page h2{font-size:36px;margin-bottom:10px}
+.contact-line{
+width:90px;height:4px;
+background:linear-gradient(90deg,gold,pink);
+margin:14px auto 30px;border-radius:10px
+}
+.contact-page p{color:#ccc;margin-bottom:35px}
+.contact-card{
+background:#111;border:1px solid #333;
+border-radius:18px;padding:22px;margin-bottom:18px;
+display:flex;align-items:center;gap:18px;
+max-width:520px;margin:auto
+}
+.contact-icon{font-size:28px}
+.contact-text{text-align:left}
+.contact-text span{display:block;color:gold;font-size:15px;margin-bottom:6px}
+.contact-text a{color:gold;text-decoration:none;font-size:20px}
 
 /* FOOTER */
-footer{
-text-align:center;padding:18px;
-border-top:1px solid #222;font-size:14px
-}
-
-/* MOBILE */
-@media (max-width:600px){
-nav{width:100%}
-.nav-btn{flex:1;width:100%}
-.logo{text-align:center;width:100%;font-size:24px}
-.marketplace{font-size:24px}
-.hero h1{font-size:26px}
-}
+footer{text-align:center;padding:18px;border-top:1px solid #222;font-size:14px}
 </style>
 </head>
 
@@ -146,10 +186,8 @@ nav{width:100%}
 <div class="logo">Craig’sLogs <span class="marketplace">Marketplace</span></div>
 <nav>
 <button class="nav-btn" onclick="showPage('page1')">Home</button>
-<button class="nav-btn" onclick="showPage('cart')">
-Cart <span class="cart-badge" id="cart-count">0</span>
-</button>
-<button class="nav-btn" onclick="contactSupport()">Contact Support</button>
+<button class="nav-btn" onclick="showPage('cart')">Cart <span class="cart-badge" id="cart-count">0</span></button>
+<button class="nav-btn" onclick="showPage('contact')">Contact Support</button>
 </nav>
 </header>
 
@@ -159,30 +197,36 @@ Cart <span class="cart-badge" id="cart-count">0</span>
 <h1>Select The Type Of Social Media Account You Want To Purchase</h1>
 </div>
 <div class="social-center">
-<div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"> Facebook</div>
-<div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"> Instagram</div>
-<div class="social-item" onclick="showPage('page2')">
-<img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"> TikTok
-</div>
-<div class="social-item"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"> Twitter</div>
+<div class="social-item" onclick="showPage('facebook')"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"> Facebook</div>
+<div class="social-item" onclick="showPage('instagram')"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png"> Instagram</div>
+<div class="social-item" onclick="showPage('page2')"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"> TikTok</div>
+<div class="social-item" onclick="showPage('twitter')"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"> Twitter</div>
 </div>
 </div>
 
-<!-- PRODUCTS -->
+<!-- TIKTOK PRODUCTS -->
 <div id="page2" class="page">
 <div class="hero"><h1>Available TikTok Accounts</h1></div>
 <div class="products">
 <div class="product">
-<img src="https://i.imgur.com/9XqYFQO.jpg">
+<img src="https://i.imgur.com/cUHKhzi.jpg">
 <h3>₦25,000</h3>
 <p>No Followers Drop<br>Active Followers<br>TikTok Shop</p>
 <button id="p1" onclick="toggleCart('p1','TikTok Account ₦25,000',25000)">Add to Cart</button>
 </div>
+
 <div class="product">
-<img src="https://i.imgur.com/9XqYFQO.jpg">
+<img src="https://i.imgur.com/I5wOhpi.jpg">
 <h3>₦22,000</h3>
 <p>No Followers Drop<br>Active Followers<br>TikTok Shop</p>
 <button id="p2" onclick="toggleCart('p2','TikTok Account ₦22,000',22000)">Add to Cart</button>
+</div>
+
+<div class="product">
+<img src="https://i.imgur.com/3jdN6k3.jpg">
+<h3>₦20,000</h3>
+<p>No Followers Drop<br>Active Followers<br>TikTok Shop</p>
+<button id="p3" onclick="toggleCart('p3','TikTok Account ₦20,000',20000)">Add to Cart</button>
 </div>
 </div>
 </div>
@@ -196,26 +240,46 @@ Cart <span class="cart-badge" id="cart-count">0</span>
 
 <div class="payment-box">
 <h3>Bank Transfer</h3>
-
-<div class="copy-wrap">
-<input class="copy-input" id="bank" value="OPay" readonly>
-<button class="copy-btn" onclick="copyText('bank')">Copy</button>
-</div>
-
-<div class="copy-wrap">
-<input class="copy-input" id="name" value="CHUKWUKA CRAIG NWOYE" readonly>
-<button class="copy-btn" onclick="copyText('name')">Copy</button>
-</div>
-
-<div class="copy-wrap">
-<input class="copy-input" id="acct" value="8051424233" readonly>
-<button class="copy-btn" onclick="copyText('acct')">Copy</button>
-</div>
-
+<div class="copy-wrap"><input class="copy-input" value="OPay" readonly><button class="copy-btn" onclick="copyText(this.previousElementSibling)">Copy</button></div>
+<div class="copy-wrap"><input class="copy-input" value="CHUKWUKA CRAIG NWOYE" readonly><button class="copy-btn" onclick="copyText(this.previousElementSibling)">Copy</button></div>
+<div class="copy-wrap"><input class="copy-input" value="8051424233" readonly><button class="copy-btn" onclick="copyText(this.previousElementSibling)">Copy</button></div>
 <p>After payment, confirm via WhatsApp.</p>
-<button id="payBtn" class="whatsapp-btn" disabled onclick="confirmPayment()">
-I Have Paid (WhatsApp)
-</button>
+<button id="payBtn" class="whatsapp-btn" disabled onclick="confirmPayment()">I Have Paid (WhatsApp)</button>
+</div>
+</div>
+</div>
+
+<!-- SOCIAL PAGES -->
+<div id="facebook" class="page"><div style="background:#000;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+<h1>No Available Facebook Account,<br>If You Have Any For Sale Click The Sell Button Below 👇</h1>
+<button onclick="window.open('https://wa.me/447882975639','_blank')" class="whatsapp-btn">Sell</button>
+</div></div>
+
+<div id="instagram" class="page"><div style="background:#000;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+<h1>No Available Instagram Account,<br>If You Have Any For Sale Click The Sell Button Below 👇</h1>
+<button onclick="window.open('https://wa.me/447882975639','_blank')" class="whatsapp-btn">Sell</button>
+</div></div>
+
+<div id="twitter" class="page"><div style="background:#000;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+<h1>No Available Twitter Account,<br>If You Have Any For Sale Click The Sell Button Below 👇</h1>
+<button onclick="window.open('https://wa.me/447882975639','_blank')" class="whatsapp-btn">Sell</button>
+</div></div>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+<div class="contact-page">
+<h2>Contact Us</h2>
+<div class="contact-line"></div>
+<p>Get in touch with us for inquiries or support.</p>
+
+<div class="contact-card">
+<div class="contact-icon">💬</div>
+<div class="contact-text"><span>WhatsApp</span><a href="https://wa.me/447882975639">+447882975639</a></div>
+</div>
+
+<div class="contact-card">
+<div class="contact-icon">✉️</div>
+<div class="contact-text"><span>Email</span><a href="mailto:craignwoye2@gmail.com">craignwoye2@gmail.com</a></div>
 </div>
 </div>
 </div>
@@ -223,7 +287,8 @@ I Have Paid (WhatsApp)
 <footer>© 2025 Craig’sLogs Marketplace</footer>
 
 <script>
-let cartItems={},total=0;
+let cartItems = {};
+let total = 0;
 
 function showPage(id){
 document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -231,58 +296,48 @@ document.getElementById(id).classList.add('active');
 }
 
 function toggleCart(id,name,price){
-let btn=document.getElementById(id);
+const btn=document.getElementById(id);
 if(cartItems[id]){
-delete cartItems[id];total-=price;
-btn.innerText="Add to Cart";btn.classList.remove("remove");
+delete cartItems[id]; total-=price;
+btn.innerText="Add to Cart"; btn.classList.remove("remove");
 }else{
-cartItems[id]={name,price};total+=price;
-btn.innerText="Remove from Cart";btn.classList.add("remove");
+cartItems[id]={name,price}; total+=price;
+btn.innerText="Remove from Cart"; btn.classList.add("remove");
 }
 renderCart();
 }
 
 function removeFromCart(id){
+if(!cartItems[id])return;
 total-=cartItems[id].price;
 delete cartItems[id];
-document.getElementById(id).innerText="Add to Cart";
-document.getElementById(id).classList.remove("remove");
+const btn=document.getElementById(id);
+if(btn){btn.innerText="Add to Cart";btn.classList.remove("remove");}
 renderCart();
 }
 
 function renderCart(){
-let list=document.getElementById("cart-items");
+const list=document.getElementById("cart-items");
 list.innerHTML="";
 let count=0;
 for(let id in cartItems){
 count++;
-list.innerHTML+=`
-<div class="cart-item">
-<span>${cartItems[id].name}</span>
-<span>₦${cartItems[id].price}</span>
-<button onclick="removeFromCart('${id}')">Remove</button>
-</div>`;
+list.innerHTML+=`<div class="cart-item"><span>${cartItems[id].name}</span><span>₦${cartItems[id].price}</span><button onclick="removeFromCart('${id}')">Remove</button></div>`;
 }
 document.getElementById("total").innerText=total;
 document.getElementById("cart-count").innerText=count;
-document.getElementById("payBtn").disabled = count === 0;
+document.getElementById("payBtn").disabled=count===0;
 }
 
-function copyText(id){
-let input=document.getElementById(id);
-input.select();input.setSelectionRange(0,99999);
+function copyText(input){
 navigator.clipboard.writeText(input.value);
 alert("Copied");
 }
 
 function confirmPayment(){
-if(total===0) return;
+if(total===0)return;
 let msg=`Hello Craig’sLogs Marketplace,%0ATotal Paid: ₦${total}`;
 window.open(`https://wa.me/447882975639?text=${msg}`,"_blank");
-}
-
-function contactSupport(){
-window.open("https://mail.google.com/mail/?view=cm&fs=1&to=craignwoye2@gmail.com&su=Craig’sLogs Marketplace Support","_blank");
 }
 </script>
 
