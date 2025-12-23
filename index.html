@@ -204,7 +204,7 @@ footer{text-align:center;padding:18px;border-top:1px solid #222;font-size:14px}
 </div>
 </div>
 
-<!-- TIKTOK PRODUCTS -->
+<!-- TIKTOK -->
 <div id="page2" class="page">
 <div class="hero"><h1>Available TikTok Accounts</h1></div>
 <div class="products">
@@ -249,7 +249,7 @@ footer{text-align:center;padding:18px;border-top:1px solid #222;font-size:14px}
 </div>
 </div>
 
-<!-- SOCIAL PAGES -->
+<!-- SOCIAL EMPTY PAGES -->
 <div id="facebook" class="page"><div style="background:#000;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
 <h1>No Available Facebook Account,<br>If You Have Any For Sale Click The Sell Button Below 👇</h1>
 <button onclick="window.open('https://wa.me/447882975639','_blank')" class="whatsapp-btn">Sell</button>
@@ -331,12 +331,24 @@ document.getElementById("payBtn").disabled=count===0;
 
 function copyText(input){
 navigator.clipboard.writeText(input.value);
-alert("Copied");
 }
 
 function confirmPayment(){
 if(total===0)return;
-let msg=`Hello Craig’sLogs Marketplace,%0ATotal Paid: ₦${total}`;
+
+let ref="CLM-"+Date.now();
+let items="";
+for(let id in cartItems){items+=`- ${cartItems[id].name}%0A`;}
+
+let msg=
+`📦 ORDER CONFIRMATION%0A
+━━━━━━━━━━━━━━%0A
+🧾 Order Ref: ${ref}%0A
+📋 Items:%0A${items}
+💰 Total Paid: ₦${total}%0A
+━━━━━━━━━━━━━━%0A
+Please confirm my payment.`;
+
 window.open(`https://wa.me/447882975639?text=${msg}`,"_blank");
 }
 </script>
